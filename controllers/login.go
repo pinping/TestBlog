@@ -3,6 +3,7 @@ package controllers
 import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
+	"fmt"
 )
 
 type LoginController struct {
@@ -22,7 +23,7 @@ func (c *LoginController) Get() {
 }
 
 func (c *LoginController) Post() {
-	//c.Ctx.WriteString(fmt.Sprint(c.Input()))
+	c.Ctx.WriteString(fmt.Sprint(c.Input()))
 
 	uname := c.Input().Get("uname")
 	pwd := c.Input().Get("pwd")
@@ -38,7 +39,7 @@ func (c *LoginController) Post() {
 		c.Ctx.SetCookie("uname", uname, maxAge, "/")
 		c.Ctx.SetCookie("pwd", pwd, maxAge, "/")
 	}
-	c.Redirect("/", 301)
+	//c.Redirect("/", 301)
 	return
 }
 
